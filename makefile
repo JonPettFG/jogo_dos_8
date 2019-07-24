@@ -1,15 +1,18 @@
 
-Jogo_dos_8: main.o listas.o
-	gcc main.o listas.o interface.o grafos.o interface.o -o Jogo_dos_8
+Jogo_dos_8: main.o 
+	gcc main.o interface.o grafo.o -o Jogo_dos_8
 
 main.o: main.c
 	gcc -c main.c
+	
+movimentos.o: movimentos.c movimentos.h
+	gcc -c movimentos.c
+	
+estado.o: estado.c estado.h
+	gcc -c iestado.c
 
-listas.o: listas.c listas.h
-	gcc -c listas.c
-
-grafos.o: grafos.c grafos.h
-	gcc -c grafos.c listas.o
+grafo.o: grafo.c grafo.h
+	gcc -c grafo.c movimentos.o estado.h
 
 interface.o: interface.c interface.h
 	gcc -c interface.c
